@@ -1,0 +1,12 @@
+import axios from 'axios';
+import { getAdminToken } from '../utils/token-storage';
+
+const BASE_URL = 'https://sairna.abdulrahman-hares.com/api/v1/dashboard';
+
+export const getCities = async () => {
+  const token = getAdminToken();
+  const response = await axios.get(`${BASE_URL}/cities`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
